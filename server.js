@@ -7,7 +7,11 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 
+
 const io = require('socket.io')(server);
+
+//Aumentado
+app.set('port', process.env.PORT || 3000);
 
 app.use(express.static(path.join(__dirname+'/public')));
 
@@ -22,4 +26,6 @@ io.on('connection', function(socket){
         socket.broadcast.emit('chat', message);
     });
 });
-server.listen(3000);
+//server.listen(3000);
+server.listen(app.get('port'));
+console.log(`server on port ${app.get('port')}`);
