@@ -23,6 +23,8 @@ io.on('connection', function(socket){
     });
 });
 
+server.listen(3000);
+
 (function(){
 
     const app = document.querySelector('.app');
